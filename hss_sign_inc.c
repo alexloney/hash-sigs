@@ -196,7 +196,8 @@ bool hss_sign_finalize(
         /* And then the LM-OTS signature */
 
     /* Copy in the C value into the signature */
-    memcpy( signature+4, ctx->c, 32 );
+    struct merkle_level* bottom = working_key->tree[working_key->levels - 1];
+    memcpy( signature+4, ctx->c, bottom->hash_size );
 
     /* Generate the final hash */
     unsigned char hash[ MAX_HASH ];
