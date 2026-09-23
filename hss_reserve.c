@@ -142,7 +142,15 @@ bool hss_reserve_signature(
      * reason we shouldn't support it
      */
     if (!update_private_key) {
-        if (0 != memcmp( context, w->private_key, PRIVATE_KEY_LEN)) {
+        unsigned char diff = 0;
+        const unsigned char* p_context = (const unsigned char*)context;
+        const unsigned char* p_key = (const unsigned char*)w->private_key;
+
+        for (size_t i = 0; i < PRIVATE_KEY_LEN; i++) {
+            diff |= (p_context[i] ^ p_key[i]);
+        }
+
+        if (diff != 0) {
             info->error_code = hss_error_key_mismatch;
             return false;   /* Private key mismatch */
         }
