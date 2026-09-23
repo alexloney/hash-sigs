@@ -54,7 +54,7 @@ bool lm_ots_validate_signature_compute(
 
     unsigned char Q[MAX_HASH + 2];
     if (message_prehashed) {
-        if (message_len < n)
+        if (message_len != n)
             return false;
 
         memcpy( Q, message, n );

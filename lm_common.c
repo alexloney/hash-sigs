@@ -81,7 +81,7 @@ size_t lm_get_signature_len(param_set_t lm_type,
 /*
  * Perform a comparison of two variables in constant-time.
  */
-bool constant_time_memcmp(const void* a, const void* b, size_t n) {
+bool constant_time_equal(const void* a, const void* b, size_t n) {
     unsigned char diff = 0;
     const unsigned char* pa = (const unsigned char*)a;
     const unsigned char* pb = (const unsigned char*)b;

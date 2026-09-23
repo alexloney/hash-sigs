@@ -240,6 +240,6 @@ struct seed_derive;
 void lm_ots_generate_randomizer(unsigned char *c, unsigned n,
                                 struct seed_derive *seed);
 
-bool constant_time_memcmp(const void *a, const void *b, size_t n);
+bool constant_time_equal(const void *a, const void *b, size_t n);
 
 #endif /* HSS_INTERNAL_H_ */
